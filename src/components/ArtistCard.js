@@ -1,20 +1,33 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, Pressable, View } from "react-native";
+import abbreviate from "number-abbreviate";
+
 import React from "react";
 
-const ArtistCard = ({ item }) => {
+const ArtistCard = ({ item, navigation }) => {
   return (
-    <View style={styles.container}>
-      {item.images ? <Image
-        style={styles.image}
-        source={{
-          uri: item?.images[0]?.url,
-        }}
-      /> : <Text>Sem Imagem</Text>}
+    <Pressable
+      style={styles.container}
+      onPress={() => navigation.navigate("ArtistDetails", { item })}
+    >
+      {item.images ? (
+        <Image
+          style={styles.image}
+          source={{
+            uri: item?.images[1]?.url,
+          }}
+        />
+      ) : (
+        <Text>Sem Imagem</Text>
+      )}
       <View style={styles.infoWrapper}>
-        <Text style={styles.title}>{item?.name ? item?.name : "Desconhecido"}</Text>
-        <Text style={styles.subtitle}>{item?.followers?.total ? item?.followers?.total : "Desconhecido"}</Text>
+        <Text style={styles.title}>
+          {item?.name ? item?.name : "Desconhecido"}
+        </Text>
+        <Text style={styles.subtitle}>
+          {item?.followers?.total ? abbreviate(item?.followers?.total, 2) : "Desconhecido"}
+        </Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

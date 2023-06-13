@@ -7,7 +7,7 @@ import {
 } from "/src/utils/utils";
 import ArtistCard from "./ArtistCard";
 
-const GenerateArtistsCards = () => {
+const GenerateArtistsCards = ({navigation}) => {
   const [numberOfArtists, setNumberOfArtists] = useState(50);
 
   //Id da playlist com Top Artistas
@@ -51,7 +51,7 @@ const GenerateArtistsCards = () => {
         <FlatList
           data={artistsData?.artists}
           style={{gap: 10}}
-          renderItem={({ item }) => <ArtistCard item={item} />}
+          renderItem={({ item }) => <ArtistCard navigation={navigation} item={item} />}
           numColumns={2}
           keyExtractor={(item) => item.id}
           // ItemSeparatorComponent={() => <View style={{height: 10}} 

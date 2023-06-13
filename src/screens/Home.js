@@ -6,7 +6,7 @@ import Cardbox from "../components/Cardbox";
 import ArtistCard from "../components/ArtistCard";
 import GenerateArtistsCards from "../components/GenerateArtistsCards";
 
-const Home = () => {
+const Home = ({navigation}) => {
   return (
     <View style={styles.container}>
       <Header />
@@ -15,7 +15,7 @@ const Home = () => {
       </View>
       <Cardbox>
         <Text style={styles.subtitle}>Artistas do momento</Text>
-        <GenerateArtistsCards />
+        <GenerateArtistsCards navigation={navigation}/>
       </Cardbox>
       <StatusBar style="light" />
     </View>
