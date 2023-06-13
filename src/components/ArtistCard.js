@@ -1,11 +1,11 @@
 import { Image, StyleSheet, Text, View } from "react-native";
 import React from "react";
 
-const ArtistCard = ({ item, marginRight }) => {
+const ArtistCard = ({ item }) => {
   return (
     <View style={styles.container}>
       {item.images ? <Image
-        style={`${styles.image} ${marginRight}`}
+        style={styles.image}
         source={{
           uri: item?.images[0]?.url,
         }}
@@ -22,10 +22,9 @@ export default ArtistCard;
 
 const styles = StyleSheet.create({
   container: {
-    //Não usar Margin
-    width: "50%",
-    padding: 8,
-    marginRight: marginRight,
+    width: "45%",
+    padding: 6,
+    margin: 8,
     backgroundColor: "blue",
     height: 200,
     borderRadius: 8,

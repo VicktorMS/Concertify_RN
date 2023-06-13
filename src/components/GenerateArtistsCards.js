@@ -51,10 +51,11 @@ const GenerateArtistsCards = () => {
         <FlatList
           data={artistsData?.artists}
           style={{gap: 10}}
-          renderItem={({ item, index }) => <ArtistCard marginRight={index % 2 !== 0 ? 0 : 10} item={item} />}
+          renderItem={({ item }) => <ArtistCard item={item} />}
           numColumns={2}
           keyExtractor={(item) => item.id}
-          ItemSeparatorComponent={() => <View style={{height: 10}} />}
+          // ItemSeparatorComponent={() => <View style={{height: 10}} 
+          // />}
         />
       ) : (
         <Text>Carregando...</Text>
