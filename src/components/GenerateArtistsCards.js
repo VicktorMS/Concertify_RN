@@ -46,7 +46,7 @@ const GenerateArtistsCards = ({navigation}) => {
 
   return (
     <>
-      {artistsError && <Text>Não possível foi buscar artistas </Text>}
+      {artistsError && <Text style={styles.title}>Não possível foi buscar artistas </Text>}
       {artistsData && artistsData?.artists[0] ? (
         <FlatList
           data={artistsData?.artists}
@@ -58,7 +58,7 @@ const GenerateArtistsCards = ({navigation}) => {
           // />}
         />
       ) : (
-        <Text>Carregando...</Text>
+        <Text style={styles.title}>Carregando...</Text>
       )}
     </>
   );
@@ -67,4 +67,9 @@ const GenerateArtistsCards = ({navigation}) => {
 export default GenerateArtistsCards;
 
 const styles = StyleSheet.create({
+  title: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "700",
+  },
 });

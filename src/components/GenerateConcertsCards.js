@@ -1,17 +1,47 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import { FlatList } from 'react-native'
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { useFetchBandsInTown } from "../hooks/useFetchBandsInTown";
+import { FlatList } from "react-native";
+import ConcertCard from "./ConcertCard";
 
-const GenerateConcertsCards = () => {
+const GenerateConcertsCards = ({ artistName }) => {
+  const {
+    data: concertsData,
+    error: concertsError,
+    isFetching: isFetchingConcerts,
+  } = useFetchBandsInTown(`artists/${artistName}/events`);
+
+  console.log(!isFetchingConcerts && concertsData);
+
   return (
-   <>
-    <FlatList
-    
-    />
-   </>
-  )
-}
+    <>
+      {concertsError && <Text style={styles.title}>Não possível foi buscar artistas </Text>}
 
-export default GenerateConcertsCards
+      {!isFetchingConcerts && concertsData ? (
+        concertsData.errorMessage ? (
+          <Text style={styles.title}>{concertsData.errorMessage}</Text>
+        ) : !concertsData.length ? (
+          <Text style={styles.title}>Esse artista não está fazendo shows</Text>
+        ) : (
+          <FlatList
+            data={concertsData}
+            renderItem={({ item }) => <ConcertCard item={item} />}
+            keyExtractor={(item) => item.id}
+          />
+        )
+      ) : (
+        <Text style={styles.title}>Carregando...</Text>
+      )}
+    </>
+  );
+};
 
-const styles = StyleSheet.create({})
+export default GenerateConcertsCards;
+
+const styles = StyleSheet.create({
+  title: {
+    color: "white",
+    fontSize: 18,
+    fontWeight: "700",
+  },
+});

@@ -6,25 +6,15 @@ import {
   Button,
   TouchableOpacity,
 } from "react-native";
-import { useFetchBandsInTown } from "../hooks/useFetchBandsInTown";
 import { Ionicons } from "@expo/vector-icons";
 import abbreviate from "number-abbreviate";
-
 import React from "react";
 import Cardbox from "../components/Cardbox";
-import ConcertCard from "../components/ConcertCard";
-
+import GenerateConcertsCards from "../components/GenerateConcertsCards";
 const ArtistDetails = ({ route, navigation }) => {
   const { item } = route.params;
 
-  const {
-    data: concertsData,
-    error: concertsError,
-    isFetching: isFetchingConcerts,
-  } = useFetchBandsInTown(`artists/${item?.name}/events`);
-
-  console.log(!isFetchingConcerts && concertsData)
-
+  
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -48,7 +38,7 @@ const ArtistDetails = ({ route, navigation }) => {
         </View>
       </View>
       <Cardbox>
-        <ConcertCard/>
+        <GenerateConcertsCards artistName={item?.name}/>
       </Cardbox>
     </View>
   );
