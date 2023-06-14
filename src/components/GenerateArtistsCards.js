@@ -6,8 +6,9 @@ import {
   filterArtistsFromSpotifyPlaylist,
 } from "/src/utils/utils";
 import ArtistCard from "./ArtistCard";
+import GenerateLoadingCards from "./GenerateLoadingCards";
 
-const GenerateArtistsCards = ({navigation}) => {
+const GenerateArtistsCards = ({ navigation }) => {
   const [numberOfArtists, setNumberOfArtists] = useState(50);
 
   //Id da playlist com Top Artistas
@@ -46,19 +47,23 @@ const GenerateArtistsCards = ({navigation}) => {
 
   return (
     <>
-      {artistsError && <Text style={styles.title}>Não possível foi buscar artistas </Text>}
+      {artistsError && (
+        <Text style={styles.title}>Não possível foi buscar artistas </Text>
+      )}
       {artistsData && artistsData?.artists[0] ? (
         <FlatList
           data={artistsData?.artists}
-          style={{gap: 10}}
-          renderItem={({ item }) => <ArtistCard navigation={navigation} item={item} />}
+          style={{ gap: 10 }}
+          renderItem={({ item }) => (
+            <ArtistCard navigation={navigation} item={item} />
+          )}
           numColumns={2}
           keyExtractor={(item) => item.id}
-          // ItemSeparatorComponent={() => <View style={{height: 10}} 
+          // ItemSeparatorComponent={() => <View style={{height: 10}}
           // />}
         />
       ) : (
-        <Text style={styles.title}>Carregando...</Text>
+        <GenerateLoadingCards />
       )}
     </>
   );

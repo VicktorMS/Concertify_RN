@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Cardbox from "../components/Cardbox";
 import ArtistCard from "../components/ArtistCard";
 import GenerateArtistsCards from "../components/GenerateArtistsCards";
+import GenerateLoadingCards from "../components/GenerateLoadingCards";
 
 const Home = ({navigation}) => {
   return (
