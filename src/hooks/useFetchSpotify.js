@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchSpotifyAccessToken } from "../services/fetchSpotifyAccessToken";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+// Esse Hook deveria guardar o accesstoken em cache para as novas requisições, it is what it is 
 export function useFetchSpotify(url, method) {
   const [data, setData] = useState(null);
   const [isFetching, setIsFetching] = useState(true);
