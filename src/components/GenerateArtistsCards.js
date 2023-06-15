@@ -4,7 +4,7 @@ import { useFetchSpotify } from "../hooks/useFetchSpotify";
 import {
   arrayToString,
   filterArtistsFromSpotifyPlaylist,
-} from "/src/utils/utils";
+} from "../utils/utils";
 import ArtistCard from "./ArtistCard";
 import GenerateLoadingCards from "./GenerateLoadingCards";
 

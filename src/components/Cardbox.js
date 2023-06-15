@@ -1,11 +1,11 @@
-import { StyleSheet, ScrollView } from 'react-native'
+import { StyleSheet, ScrollView, View } from 'react-native'
 import React from 'react'
 
 const Cardbox = ({children}) => {
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       {children}
-    </ScrollView>
+    </View>
   )
 }
 
